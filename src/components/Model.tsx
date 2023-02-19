@@ -1,6 +1,7 @@
 import { useLayoutEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { applyProps } from "@react-three/fiber";
+import * as THREE from "three";
 
 function Model() {
 	const { scene, nodes, materials }: any = useGLTF("./audipro.glb");
@@ -12,7 +13,7 @@ function Model() {
 				node.isMesh && (node.receiveShadow = node.castShadow = true)
 		);
 		applyProps(materials.glass_window, {
-			color: "black",
+			color: "white",
 			roughness: 0,
 			clearcoat: 0.1,
 		});
@@ -28,22 +29,52 @@ function Model() {
 			roughness: 0.45,
 			metalness: 0.8,
 		});
-	}, [nodes, materials]);
+		applyProps(materials.chrome, {
+			color: "white",
+			envMapIntensity: 2,
+			roughness: 0,
+			clearcoat: 0.1,
+		});
+		applyProps(materials.light, {
+			color: "white",
+			envMapIntensity: 2,
+			roughness: 0,
+			clearcoat: 0.1,
+		});
+		applyProps(materials.Aluminium_1, {
+			color: "white",
+			envMapIntensity: 2,
+			roughness: 0,
+			clearcoat: 0.1,
+		});
+		applyProps(materials.glass_projector, {
+			color: "white",
+			envMapIntensity: 2,
+			roughness: 0,
+			clearcoat: 0.1,
+		});
 
+		applyProps(materials.black_gloss, {
+			color: "#555",
+			envMapIntensity: 2,
+			roughness: 0.45,
+			metalness: 0.8,
+		});
+		applyProps(materials.trim, {
+			color: "#666",
+			envMapIntensity: 2,
+			roughness: 0.45,
+			metalness: 0.8,
+		});
+	}, [nodes, materials]);
 	return (
 		<primitive
 			object={scene}
-			scale={0.006}
-			position={[1, -6, -3]}
+			scale={0.002}
+			position={[3, -1, 5]}
 			rotation={[0, Math.PI / 3, 0]}
 		/>
 	);
 }
 
 export default Model;
-
-// applyProps(materials.coat, {
-// 	envMapIntensity: 4,
-// 	roughness: 0.5,
-// 	metalness: 1,
-// });

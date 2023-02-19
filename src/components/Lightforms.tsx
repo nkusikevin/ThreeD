@@ -56,7 +56,7 @@ function Lightforms({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
 			<Float speed={5} floatIntensity={2} rotationIntensity={2}>
 				<Lightformer
 					form='ring'
-					color='red'
+					color='#000000'
 					intensity={1}
 					scale={10}
 					position={[-15, 4, -18]}
@@ -64,13 +64,13 @@ function Lightforms({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
 				/>
 			</Float>
 			{/* Background */}
-			<mesh scale={100}>
+			{/* <mesh scale={100}>
 				<sphereGeometry args={[1, 64, 64]} />
 				<LayerMaterial side={THREE.BackSide}>
-					<Color color='#444' alpha={1} mode='normal' />
+					<Color color='black' alpha={1} mode='normal' />
 					<Depth
-						colorA='blue'
-						colorB='black'
+						colorA='#000000'
+						colorB='#000000'
 						alpha={0.5}
 						mode='normal'
 						near={0}
@@ -78,7 +78,7 @@ function Lightforms({ positions = [2, 0, 2, 0, 2, 0, 2, 0] }) {
 						origin={[100, 100, 100]}
 					/>
 				</LayerMaterial>
-			</mesh>
+			</mesh> */}
 		</>
 	);
 }

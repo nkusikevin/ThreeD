@@ -1,5 +1,8 @@
 body {
-	background-color: black;
+	font-family: "Inter var", sans-serif;
+	color: white;
+	background: linear-gradient(to top, #0a0a0a, #181a1a, #2d2d2f);
+	user-select: none;
 }
 
 * {
