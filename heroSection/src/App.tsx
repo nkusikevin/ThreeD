@@ -1,34 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import {
+	Center,
+	Environment,
+	OrbitControls,
+	PerspectiveCamera,
+	Stars,
+} from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import "./App.css";
+import Model from "./Model";
+import EartModel from "./EartModel";
 
 function App() {
-  const [count, setCount] = useState(0)
+	return (
+		<div className='bg'>
+			<h1 className='title'>
+				To <span style={{ fontSize: "0.4em" }}>the</span>
+				<br />
+				<span>Moon</span>
+			</h1>
+			<Canvas>
+				<Environment preset='sunset' />
+				<ambientLight intensity={0.75} />
+				<PerspectiveCamera makeDefault position={[0, 0, 16]} fov={75}>
+					<pointLight intensity={1} position={[0, 0, 0]} />
+					<spotLight
+						castShadow
+						intensity={2.25}
+						angle={0.2}
+						penumbra={1}
+						position={[-25, 20, -15]}
+						shadow-mapSize={[1024, 1024]}
+						shadow-bias={-0.0001}
+					/>
+				</PerspectiveCamera>
+				<Center>
+					<Model />
+					{/* <EartModel /> */}
+				</Center>
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+				<OrbitControls
+					autoRotate
+					enablePan={false}
+					enableZoom={false}
+					maxPolarAngle={Math.PI / 2}
+					minPolarAngle={Math.PI / 2}
+				/>
+				<Stars radius={500} depth={50} count={1000} factor={10} />
+			</Canvas>
+		</div>
+	);
 }
 
-export default App
+export default App;
