@@ -4,7 +4,7 @@ import { Center, useGLTF } from "@react-three/drei";
 import { applyProps } from "@react-three/fiber";
 import * as THREE from "three";
 
-function Model() {
+function Model({ color }: any) {
 	const { materials, nodes, scene }: any = useGLTF("/jeep.glb");
 
 	useLayoutEffect(() => {
@@ -21,7 +21,7 @@ function Model() {
 			envMapIntensity: 2,
 			roughness: 0.45,
 			metalness: 0.8,
-			color: "#888",
+			color: color,
 		});
 		applyProps(materials.Rims, {
 			color: "#474747",
@@ -65,8 +65,8 @@ function Model() {
 			roughness: 0.45,
 			metalness: 0.8,
 		});
-	}, [nodes, materials]);
-	return <primitive object={scene} scale={1} position={[0, -0.17, 3]} />;
+	}, [nodes, materials, color]);
+	return <primitive object={scene} scale={1} position={[0, 2, 3]} />;
 }
 
 export default Model;

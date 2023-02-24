@@ -1,58 +1,40 @@
 import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 import {
 	Center,
 	Environment,
-	useGLTF,
 	OrbitControls,
 	RoundedBox,
 	Stage,
+	MeshReflectorMaterial,
+	PresentationControls,
 } from "@react-three/drei";
 
 import Model from "./Model";
-import { Effects } from "./Effect";
+import { useControls } from "leva";
 function App() {
+	const { color } = useControls({ color: "#b78135" });
 	return (
 		<div className='bg'>
-			<Canvas>
-				<Environment preset='night' />
-				<ambientLight intensity={0.5} />
-				<pointLight position={[10, 10, 10]} />
-
-				<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+			<Canvas shadows camera={{ position: [4, 0, -12], fov: 35 }}>
+				<Stage
+					intensity={1.5}
+					environment='city'
+					shadows={{
+						type: "accumulative",
+						color: "black",
+						colorBlend: 2,
+						opacity: 2,
+					}}
+					adjustCamera={0.9}>
+					<Model color={color} />
+				</Stage>
 				<OrbitControls
 					autoRotate
-					enablePan={false}
-					enableZoom={false}
-					maxPolarAngle={Math.PI / 2}
+					makeDefault
 					minPolarAngle={Math.PI / 2}
+					maxPolarAngle={Math.PI / 2}
 				/>
-				<Center>
-					<Stage
-						environment={"night"}
-						intensity={1}
-						// contactShadow={false}
-						// shadowBias={-0.0015}
-					>
-						<Model />
-					</Stage>
-
-					{/* <RoundedBox
-						receiveShadow
-						castShadow
-						smoothness={10}
-						radius={0.2}
-						rotation-x={-Math.PI / 2}
-						position-z={3}
-						scale={[6, 6, 0.2]}>
-						<meshStandardMaterial
-							color='rgb(35, 36, 39) 99%'
-							envMapIntensity={0.5}
-							roughness={0}
-							metalness={0}
-						/>
-					</RoundedBox> */}
-				</Center>
-				{/* <Effects /> */}
 			</Canvas>
 		</div>
 	);
