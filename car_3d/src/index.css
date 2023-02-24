@@ -16,10 +16,10 @@ body {
 
 .bg {
 	background: rgb(237, 184, 6);
-	background: radial-gradient(
+	/* background: radial-gradient(
 		circle,
-		rgba(237, 184, 6, 1) 0%,
-		rgba(238, 255, 28, 1) 45%,
-		rgba(204, 217, 68, 1) 99%
-	);
+		rgb(8, 7, 7) 0%,
+		rgba(0, 0, 0, 0.671) 45%,
+		rgb(35, 36, 39) 99%
+	); */
 }
