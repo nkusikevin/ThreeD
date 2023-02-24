@@ -1,0 +1,25 @@
+html,
+body,
+#root,
+.bg,
+canvas {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background: #171717;
+	font-family: "Inter var", sans-serif;
+}
+
+.bg {
+	background: rgb(237, 184, 6);
+	background: radial-gradient(
+		circle,
+		rgba(237, 184, 6, 1) 0%,
+		rgba(238, 255, 28, 1) 45%,
+		rgba(204, 217, 68, 1) 99%
+	);
+}
