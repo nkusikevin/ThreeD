@@ -1,13 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 import Navigation from "./components/Navigation";
+import SocialMedia from "./components/SocialMedia";
 
 function App() {
 	return (
-		<div className='bg'>
+		<div className='bg relative'>
 			<Navigation />
 
-			<div className='flex flex-row items-center'>
+			<div className=''>
 				<div className=' px-10 w-6/12'>
 					<h1 className='text-9xl font-bold font-mono'>Work</h1>
 					<p className='text-4xl font-mono font-semibold'>Pixel as nature</p>
@@ -19,6 +20,7 @@ function App() {
 					</p>
 				</div>
 			</div>
+			<SocialMedia />
 		</div>
 	);
 }
