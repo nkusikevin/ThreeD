@@ -2,18 +2,18 @@ import React from "react";
 
 function Navigation() {
 	return (
-		<div className='px-10 py-5'>
-			<ul className='flex items-center justify-evenly'>
-				<li className=' cursor-pointer hover:bg-fuchsia-400 px-2 rounded hover:text-white '>
+		<div className='px-10 py-5 w-full '>
+			<ul className='flex items-center   '>
+				<li className=' cursor-pointer hover:bg-fuchsia-400 px-2 rounded hover:text-white mx-12 '>
 					Home
 				</li>
-				<li className=' cursor-pointer hover:bg-fuchsia-400 px-2 rounded hover:text-white '>
+				<li className=' cursor-pointer hover:bg-fuchsia-400 px-2 rounded hover:text-white mx-12'>
 					About
 				</li>
-				<li className=' cursor-pointer hover:bg-fuchsia-400 px-2 rounded hover:text-white '>
+				<li className=' cursor-pointer hover:bg-fuchsia-400 px-2 rounded hover:text-white mx-12'>
 					Projects
 				</li>
-				<li className=' cursor-pointer hover:bg-fuchsia-400 px-2 rounded hover:text-white '>
+				<li className=' cursor-pointer hover:bg-fuchsia-400 px-2 rounded hover:text-white mx-12'>
 					Contact
 				</li>
 			</ul>
