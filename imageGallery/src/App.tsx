@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, MeshReflectorMaterial } from "@react-three/drei";
+import Frames from "./Frames";
 
-function App() {
-	const [count, setCount] = useState(0);
-
+function App({ images }: any) {
 	return (
 		<Canvas dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
 			<color attach='background' args={["#191920"]} />
 			<fog attach='fog' args={["#191920", 0, 15]} />
+
 			<group position={[0, -0.5, 0]}>
+				<Frames images={images} />
 				<mesh rotation={[-Math.PI / 2, 0, 0]}>
 					<planeGeometry args={[50, 50]} />
 					<MeshReflectorMaterial
