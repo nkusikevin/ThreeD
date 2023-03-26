@@ -5,7 +5,7 @@ function Mode() {
 	const model = useGLTF("/headphones.glb");
 	return (
 		<>
-			<primitive object={model.scene} scale={3} />
+			<primitive object={model.scene} scale={2} />
 		</>
 	);
 }
