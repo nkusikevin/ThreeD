@@ -14,9 +14,19 @@ import baffle from "baffle";
 import Robot from "./components/Robot";
 
 function App() {
+	useEffect(() => {
+		const target = baffle(".title");
+		target.set({
+			characters: "░P░h░a░n░t░o░m░",
+			speed: 100,
+		});
+		target.start();
+		target.reveal(1000, 1000);
+	});
+
 	return (
 		<>
-			<color attach='background' args={["#333333"]} />
+			<color attach='background' args={["#0f0f0f"]} />
 			<ambientLight intensity={0.2} />
 			<spotLight
 				position={[0, 25, 0]}
@@ -27,15 +37,14 @@ function App() {
 				shadow-bias={-0.0001}
 			/>
 			<Environment preset='warehouse' />
-			<ScrollControls pages={3} damping={0.1}>
-				<Scroll>
-					<Robot />
-				</Scroll>
+			<ScrollControls pages={6} damping={0.1}>
+				<Robot />
+				//@ts-ignore
 				<Scroll html style={{ width: "100%" }}>
 					<h1
 						className='title'
 						style={{
-							color: "#cdcbca",
+							color: "#0f0f0f",
 							position: "absolute",
 							top: `65vh`,
 							left: "50%",

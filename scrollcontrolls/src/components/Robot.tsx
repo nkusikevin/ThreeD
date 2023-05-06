@@ -6,17 +6,61 @@ source: https://sketchfab.com/3d-models/combat-steampunk-robot-81914abdc5b64b259
 title: Combat Steampunk Robot
 */
 
-import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+//@ts-nocheck
+
+import React, { useRef, useLayoutEffect } from "react";
+import { useGLTF, useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import gsap from "gsap";
 
 export default function Model(props: any) {
 	const { nodes, materials }: any = useGLTF("/robot.glb");
+	const robot = useRef();
+	const scroll = useScroll();
+	const tl = useRef();
+
+	useFrame((state, delta) => {
+		tl.current.seek(scroll.offset * tl.current.duration());
+	});
+
+	useLayoutEffect(() => {
+		tl.current = gsap.timeline({
+			defaults: { duration: 2, ease: "power1.inOut" },
+		});
+
+		tl.current
+			.to(robot.current.rotation, { y: -1 }, 2)
+			.to(robot.current.position, { x: 1 }, 2)
+
+			.to(robot.current.rotation, { y: 1 }, 6)
+			.to(robot.current.position, { x: -1 }, 6)
+
+			.to(robot.current.rotation, { y: 0 }, 11)
+			.to(robot.current.rotation, { x: 1 }, 11)
+			.to(robot.current.position, { x: 0 }, 11)
+
+			.to(robot.current.rotation, { y: 0 }, 13)
+			.to(robot.current.rotation, { x: -1 }, 13)
+			.to(robot.current.position, { x: 0 }, 13)
+
+			.to(robot.current.rotation, { y: 0 }, 16)
+			.to(robot.current.rotation, { x: 0 }, 16)
+			.to(robot.current.position, { x: 0 }, 16)
+
+			.to(robot.current.rotation, { y: 0 }, 20)
+			.to(robot.current.rotation, { x: 0 }, 20)
+			.to(robot.current.position, { x: 0 }, 20);
+	}, []);
 	return (
-		<group {...props} dispose={null}>
+		<group
+			{...props}
+			dispose={null}
+			ref={robot}
+			position={[-0.12, 0.0009, 0.37]}>
 			<group rotation={[-Math.PI / 2, 0, 0]}>
 				<group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
 					<group
-						position={[0, 87.47, 0]}
+						// position={[0, 87.47, 0]}
 						rotation={[-Math.PI / 2, 0, 0]}
 						scale={51.68}>
 						<primitive object={nodes._rootJoint} />
@@ -24,21 +68,25 @@ export default function Model(props: any) {
 							geometry={nodes.Object_7.geometry}
 							material={materials["Material.001"]}
 							skeleton={nodes.Object_7.skeleton}
+							castShadow
 						/>
 						<skinnedMesh
 							geometry={nodes.Object_9.geometry}
 							material={materials["Material.004"]}
 							skeleton={nodes.Object_9.skeleton}
+							castShadow
 						/>
 						<skinnedMesh
 							geometry={nodes.Object_11.geometry}
 							material={materials["Material.003"]}
 							skeleton={nodes.Object_11.skeleton}
+							castShadow
 						/>
 						<skinnedMesh
 							geometry={nodes.Object_13.geometry}
 							material={materials["Material.002"]}
 							skeleton={nodes.Object_13.skeleton}
+							castShadow
 						/>
 					</group>
 					<group
