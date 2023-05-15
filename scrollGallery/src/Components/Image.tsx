@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Image as ImageImpl } from "@react-three/drei";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
-import { useScroll } from "@react-three/drei";
+import { useScroll } from "../Components/Scroll";
 
 function Image(props: any) {
 	const ref = useRef<any>();

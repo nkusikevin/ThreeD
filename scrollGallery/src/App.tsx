@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { ScrollControls, Scroll } from "@react-three/drei";
+import { ScrollControls, Scroll } from "./Components/Scroll";
 import Pages from "./Components/Pages";
 import { Suspense } from "react";
 import { Preload } from "@react-three/drei";
@@ -9,28 +9,28 @@ function App() {
 	return (
 		<>
 			<Suspense fallback={null}>
-				<ScrollControls infinite horizontal damping={4} pages={4} distance={1}>
+				<ScrollControls infinite horizontal damping={4} pages={6} distance={1}>
 					<Scroll>
 						<Pages />
 					</Scroll>
 					<Scroll html>
 						<h1 style={{ position: "absolute", top: "20vh", left: "-75vw" }}>
-							home
+							Visit
 						</h1>
 						<h1 style={{ position: "absolute", top: "20vh", left: "25vw" }}>
-							to
+							Rwanda
 						</h1>
 						<h1 style={{ position: "absolute", top: "20vh", left: "125vw" }}>
-							be
+							Country
 						</h1>
 						<h1 style={{ position: "absolute", top: "20vh", left: "225vw" }}>
-							home
+							Of
 						</h1>
 						<h1 style={{ position: "absolute", top: "20vh", left: "325vw" }}>
-							to
+							A Thousand
 						</h1>
 						<h1 style={{ position: "absolute", top: "20vh", left: "425vw" }}>
-							be
+							Hills
 						</h1>
 					</Scroll>
 				</ScrollControls>
