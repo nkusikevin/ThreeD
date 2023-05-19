@@ -5,9 +5,9 @@ import {
 	BakeShadows,
 	useHelper,
 	Environment,
+	
 } from "@react-three/drei";
 import Office from "./Office";
-import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 
 function App() {
@@ -27,8 +27,8 @@ function App() {
 		<>
 			<color attach='background' args={[color]} />
 			<ambientLight intensity={0.01} />
-			<Environment preset='city' />
-			{/* <hemisphereLight intensity={0.125} color='#8040df' groundColor='red' /> */}
+			//add fog on the grid 
+			{/* <Environment preset='city' /> */}
 			<spotLight
 				castShadow
 				color='orange'
@@ -43,19 +43,42 @@ function App() {
 			<Bounds fit clip observe margin={1}>
 				<Office />
 			</Bounds>
-			<BakeShadows />
 
-			<OrbitControls
-				makeDefault
-				// minAzimuthAngle={0}
-				// maxAzimuthAngle={Math.PI / 2}
-				minPolarAngle={Math.PI / 3}
-				maxPolarAngle={Math.PI / 3}
-				enableZoom={true}
-				enablePan={true}
-				zoomSpeed={0.3}
+			<spotLight
+				intensity={1}
+				position={[0, 3.5, 2]}
+				shadow-mapSize-width={2048}
+				shadow-mapSize-height={2048}
+				castShadow
 			/>
-			<gridHelper args={[1000, 100, "#555", "white"]} position={[0, -4, 0]} />
+			<spotLight
+				intensity={0.2}
+				position={[-5, 2.5, 4]}
+				shadow-mapSize-width={2048}
+				shadow-mapSize-height={2048}
+			/>
+			<spotLight
+				intensity={0.2}
+				position={[5, 2.5, 4]}
+				shadow-mapSize-width={2048}
+				shadow-mapSize-height={2048}
+			/>
+			<spotLight
+				intensity={0.3}
+				position={[0, -2, -8]}
+				shadow-mapSize-width={2048}
+				shadow-mapSize-height={2048}
+				castShadow
+			/>
+			<OrbitControls
+				minDistance={1}
+				maxDistance={3}
+				minPolarAngle={0.0}
+				maxPolarAngle={Math.PI / 2 - 0.1}
+				enablePan={false}
+				target={[0, 1, 0]}
+			/>
+			<gridHelper args={[50, 25, "#101010", "#101010"]} position={[0, 0, 0]} />
 			<mesh
 				scale={200}
 				rotation={[-Math.PI / 2, 0, 0]}
