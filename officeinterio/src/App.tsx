@@ -4,6 +4,7 @@ import {
 	Bounds,
 	BakeShadows,
 	useHelper,
+	Environment,
 } from "@react-three/drei";
 import Office from "./Office";
 import { useFrame } from "@react-three/fiber";
@@ -18,9 +19,10 @@ function App() {
 	// useHelper(planeRef, PlaneHelper);
 	return (
 		<>
-			<color attach='background' args={["#252530"]} />
+			<color attach='background' args={["black"]} />
 			<ambientLight intensity={0.01} />
-			<hemisphereLight intensity={0.125} color='#8040df' groundColor='red' />
+			<Environment preset='city' />
+			{/* <hemisphereLight intensity={0.125} color='#8040df' groundColor='red' /> */}
 			<spotLight
 				castShadow
 				color='orange'
@@ -32,32 +34,29 @@ function App() {
 				shadow-bias={0.00005}
 			/>
 
-			{/* <Bounds fit clip observe margin={1}>
+			<Bounds fit clip observe margin={1}>
 				<Office />
 			</Bounds>
-			<BakeShadows /> */}
+			<BakeShadows />
 
 			<OrbitControls
 				makeDefault
-				minAzimuthAngle={0}
-				maxAzimuthAngle={Math.PI / 2}
+				// minAzimuthAngle={0}
+				// maxAzimuthAngle={Math.PI / 2}
 				minPolarAngle={Math.PI / 3}
 				maxPolarAngle={Math.PI / 3}
 				enableZoom={true}
 				enablePan={true}
 				zoomSpeed={0.3}
 			/>
-			<gridHelper
-				args={[1000, 200, "#151515", "#020202"]}
-				position={[0, -4, 0]}
-			/>
+			<gridHelper args={[1000, 100, "#555", "white"]} position={[0, -4, 0]} />
 			<mesh
 				scale={200}
 				rotation={[-Math.PI / 2, 0, 0]}
 				position={[0, -4, 0]}
 				receiveShadow>
 				<planeGeometry args={[1000, 1000, 1, 1]} />
-				<shadowMaterial transparent opacity={0.3} />
+				<shadowMaterial transparent opacity={0.2} />
 			</mesh>
 		</>
 	);
